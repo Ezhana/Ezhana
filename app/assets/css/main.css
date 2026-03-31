@@ -1,46 +1,110 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans:
+    "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Inter", "Segoe UI", sans-serif;
+  --font-serif:
+    "Noto Serif SC", "Songti SC", "STSong", "Iowan Old Style", serif;
+  --font-mono:
+    "JetBrains Mono", "SFMono-Regular", "SF Mono", "Cascadia Code", monospace;
+
+  --ui-container: 72rem;
+  --ui-radius: 0.5rem;
+  --ui-header-height: 4.5rem;
+
+  --ui-color-primary-50: var(--color-cyan-50);
+  --ui-color-primary-100: var(--color-cyan-100);
+  --ui-color-primary-200: var(--color-cyan-200);
+  --ui-color-primary-300: var(--color-cyan-300);
+  --ui-color-primary-400: var(--color-cyan-400);
+  --ui-color-primary-500: var(--color-cyan-500);
+  --ui-color-primary-600: var(--color-cyan-600);
+  --ui-color-primary-700: var(--color-cyan-700);
+  --ui-color-primary-800: var(--color-cyan-800);
+  --ui-color-primary-900: var(--color-cyan-900);
+  --ui-color-primary-950: var(--color-cyan-950);
+  --ui-primary: var(--ui-color-primary-500);
+
+  --ui-color-secondary-50: var(--color-slate-50);
+  --ui-color-secondary-100: var(--color-slate-100);
+  --ui-color-secondary-200: var(--color-slate-200);
+  --ui-color-secondary-300: var(--color-slate-300);
+  --ui-color-secondary-400: var(--color-slate-400);
+  --ui-color-secondary-500: var(--color-slate-500);
+  --ui-color-secondary-600: var(--color-slate-600);
+  --ui-color-secondary-700: var(--color-slate-700);
+  --ui-color-secondary-800: var(--color-slate-800);
+  --ui-color-secondary-900: var(--color-slate-900);
+  --ui-color-secondary-950: var(--color-slate-950);
+  --ui-secondary: var(--ui-color-secondary-600);
+
+  --ui-color-accent-50: var(--color-amber-50);
+  --ui-color-accent-100: var(--color-amber-100);
+  --ui-color-accent-200: var(--color-amber-200);
+  --ui-color-accent-300: var(--color-amber-300);
+  --ui-color-accent-400: var(--color-amber-400);
+  --ui-color-accent-500: var(--color-amber-500);
+  --ui-color-accent-600: var(--color-amber-600);
+  --ui-color-accent-700: var(--color-amber-700);
+  --ui-color-accent-800: var(--color-amber-800);
+  --ui-color-accent-900: var(--color-amber-900);
+  --ui-color-accent-950: var(--color-amber-950);
+  --ui-accent: var(--ui-color-accent-500);
+
+  --ui-color-neutral-50: var(--color-slate-50);
+  --ui-color-neutral-100: var(--color-slate-100);
+  --ui-color-neutral-200: var(--color-slate-200);
+  --ui-color-neutral-300: var(--color-slate-300);
+  --ui-color-neutral-400: var(--color-slate-400);
+  --ui-color-neutral-500: var(--color-slate-500);
+  --ui-color-neutral-600: var(--color-slate-600);
+  --ui-color-neutral-700: var(--color-slate-700);
+  --ui-color-neutral-800: var(--color-slate-800);
+  --ui-color-neutral-900: var(--color-slate-900);
+  --ui-color-neutral-950: var(--color-slate-950);
+}
 
 @layer base {
-  :root {
-    --color-background: 246 247 251;
-    --color-surface: 255 255 255;
-    --color-foreground: 15 23 42;
-    --color-muted: 71 85 105;
-    --color-border: 226 232 240;
-    --color-primary: 14 116 144;
-    --color-primary-foreground: 240 253 250;
-    --color-secondary: 30 41 59;
-    --color-secondary-foreground: 248 250 252;
-    --color-accent: 245 158 11;
-    --color-accent-foreground: 24 24 27;
-  }
-
-  * {
-    @apply border-border;
-  }
-
   html {
-    @apply bg-background text-foreground;
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply min-h-screen bg-background font-sans text-foreground antialiased;
-    background-image:
+    min-height: 100vh;
+    background:
       radial-gradient(
         circle at top,
-        rgb(var(--color-primary) / 0.12),
-        transparent 32%
+        color-mix(in oklab, var(--ui-color-primary-400) 18%, transparent),
+        transparent 34%
       ),
       linear-gradient(
         180deg,
-        rgb(var(--color-surface) / 0.92),
-        rgb(var(--color-background) / 1)
+        color-mix(in oklab, var(--ui-bg) 96%, white),
+        var(--ui-bg)
+      );
+  }
+
+  .dark body {
+    background:
+      radial-gradient(
+        circle at top,
+        color-mix(in oklab, var(--ui-color-primary-500) 24%, transparent),
+        transparent 34%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--ui-bg) 88%, black),
+        var(--ui-bg)
       );
   }
 
   ::selection {
-    background-color: rgb(var(--color-accent) / 0.24);
+    background-color: color-mix(
+      in oklab,
+      var(--ui-color-accent-400) 35%,
+      transparent
+    );
   }
 }

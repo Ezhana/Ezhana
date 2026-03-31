@@ -1,3 +1,8 @@
-# Ignore artifacts:
+# Ignore artifacts
+.data
+.nuxt
+.output
+.pnpm-store
 build
 coverage
+dist
