@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-background: 246 247 251;
+    --color-surface: 255 255 255;
+    --color-foreground: 15 23 42;
+    --color-muted: 71 85 105;
+    --color-border: 226 232 240;
+    --color-primary: 14 116 144;
+    --color-primary-foreground: 240 253 250;
+    --color-secondary: 30 41 59;
+    --color-secondary-foreground: 248 250 252;
+    --color-accent: 245 158 11;
+    --color-accent-foreground: 24 24 27;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply bg-background text-foreground;
+  }
+
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(
+        circle at top,
+        rgb(var(--color-primary) / 0.12),
+        transparent 32%
+      ),
+      linear-gradient(
+        180deg,
+        rgb(var(--color-surface) / 0.92),
+        rgb(var(--color-background) / 1)
+      );
+  }
+
+  ::selection {
+    background-color: rgb(var(--color-accent) / 0.24);
+  }
+}
