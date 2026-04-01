@@ -7,7 +7,5 @@
         <slot />
       </UContainer>
     </main>
-
-    <SiteFooter />
   </div>
 </template>
