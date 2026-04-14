@@ -23,3 +23,8 @@ logs
 .env.*
 !.env.example
 .vercel
+
+
+
+.nx/cache
+.nx/workspace-data
